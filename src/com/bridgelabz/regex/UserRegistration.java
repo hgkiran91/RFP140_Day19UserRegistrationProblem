@@ -13,6 +13,7 @@ public class UserRegistration {
     private static final String PHONE_NUMBER_PATTERN = "(^[9]{1}[1]{1}[ ])?[6-9]{1}[0-9]{9,}$";
     private static final String PASSWORD_PATTERN = "[a-z]{8,}$";
     private static final String PASSWORD_PATTERN2 = "(?=.*[A-Z])[a-zA-Z]{8,}$";
+    private static final String PASSWORD_PATTERN3 = "(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}$";
 
     public void validFirstName() {
 
@@ -92,6 +93,19 @@ public class UserRegistration {
         }
     }
 
+    public void validPasswordRule3() {
+
+        System.out.println("Enter your Password: ");
+        String password = input.next();
+        Pattern pattern = Pattern.compile(PASSWORD_PATTERN3);
+        Matcher matcher = pattern.matcher(password);
+        if (matcher.matches()) {
+            System.out.println("Valid Password");
+        } else {
+            System.out.println("Invalid Password");
+        }
+    }
+
     public static void main(String[] args) {
         UserRegistration userRegistration = new UserRegistration();
 
@@ -100,6 +114,7 @@ public class UserRegistration {
         //userRegistration.validEmail();
         //userRegistration.validPhoneNumber();
         //userRegistration.validPasswordRule1();
-        userRegistration.validPasswordRule2();
+        //userRegistration.validPasswordRule2();
+        userRegistration.validPasswordRule3();
     }
 }
