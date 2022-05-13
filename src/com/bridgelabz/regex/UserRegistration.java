@@ -10,6 +10,7 @@ public class UserRegistration {
     static Scanner input = new Scanner(System.in);
     private static final String NAME_PATTERN = "(^[A-Z]){1,}([a-zA-Z]*)$";
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9]+([.][A-Za-z]+)*@[a-zA-Z]+[.]+[a-zA-Z]{2,3}+([.][A-Za-z]+)*$";
+    private static final String PHONE_NUMBER_PATTERN = "(^[9]{1}[1]{1}[ ])?[6-9]{1}[0-9]{9}$";
 
     public void validFirstName() {
 
@@ -50,11 +51,26 @@ public class UserRegistration {
         }
     }
 
+    public void validPhoneNumber() {
+
+        System.out.println("Enter your Phone Number: ");
+        String pNumber = input.next();
+        Pattern pattern = Pattern.compile(PHONE_NUMBER_PATTERN);
+        Matcher matcher = pattern.matcher(pNumber);
+        if (matcher.matches()) {
+            System.out.println("Valid Phone Number");
+        } else {
+            System.out.println("Invalid Phone Number");
+        }
+    }
+
+
     public static void main(String[] args) {
         UserRegistration userRegistration = new UserRegistration();
 
         //userRegistration.validFirstName();
         //userRegistration.validLastName();
-        userRegistration.validEmail();
+        //userRegistration.validEmail();
+        userRegistration.validPhoneNumber();
     }
 }
