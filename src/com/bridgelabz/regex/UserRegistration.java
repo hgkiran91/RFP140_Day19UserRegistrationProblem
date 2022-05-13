@@ -8,13 +8,14 @@ import java.util.regex.Pattern;
 public class UserRegistration {
 
     static Scanner input = new Scanner(System.in);
-    private static final String NamePattern = "(^[A-Z]){1,}([a-zA-Z]*)$";
+    private static final String NAME_PATTERN = "(^[A-Z]){1,}([a-zA-Z]*)$";
+    private static final String EMAIL_PATTERN = "^[a-zA-Z0-9]+([.][A-Za-z]+)*@[a-zA-Z]+[.]+[a-zA-Z]{2,3}+([.][A-Za-z]+)*$";
 
     public void validFirstName() {
 
         System.out.println("Enter Valid First Name: ");
         String firstName = input.next();
-        Pattern pattern = Pattern.compile(NamePattern);
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
         Matcher matcher = pattern.matcher(firstName);
         if (matcher.matches()) {
             System.out.println("First Name id Valid");
@@ -27,7 +28,7 @@ public class UserRegistration {
 
         System.out.println("Enter Valid Last Name: ");
         String lastName = input.next();
-        Pattern pattern = Pattern.compile(NamePattern);
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
         Matcher matcher = pattern.matcher(lastName);
         if (matcher.matches()) {
             System.out.println("Last Name id Valid");
@@ -36,10 +37,24 @@ public class UserRegistration {
         }
     }
 
+    public void validEmail() {
+
+        System.out.println("Enter Valid Email:");
+        String email = input.next();
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        if (matcher.matches()) {
+            System.out.println("Valid Email");
+        } else {
+            System.out.println("Invalid Email");
+        }
+    }
+
     public static void main(String[] args) {
         UserRegistration userRegistration = new UserRegistration();
 
-        userRegistration.validFirstName();
-        userRegistration.validLastName();
+        //userRegistration.validFirstName();
+        //userRegistration.validLastName();
+        userRegistration.validEmail();
     }
 }
